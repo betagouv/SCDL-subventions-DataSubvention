@@ -527,15 +527,16 @@
         ]
       }
     },
+
     {
       "name": "nomsAttribuantsCofinanceursSollicites",
       "title": "Attribuants cofinanceurs du projet",
       "description": "Liste des noms des attribuants cofinanceurs qui ont été sollicités pour le projet. Si plusieurs attribuants, les séparer par |.",
       "type": "string",
-      "example": "Région Bretagne|FDVA",
       "constraints": {
         "required": false
-      }
+      },
+      "example": "Région Bretagne|FDVA"
     },
 
     {
