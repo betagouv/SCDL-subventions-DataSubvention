@@ -531,8 +531,8 @@
       "name": "nomsAttribuantsCofinanceursSollicites",
       "title": "Attribuants cofinanceurs du projet",
       "description": "Liste des noms des attribuants cofinanceurs qui ont été sollicités pour le projet. Si plusieurs attribuants, les séparer par |.",
-      "example": "Région Bretagne|FDVA",
       "type": "string",
+      "example": "Région Bretagne|FDVA",
       "constraints": {
         "required": false
       }
@@ -543,7 +543,7 @@
       "title": "Liste des types d'identifiant de l'idCofinanceursSollicites",
       "description": "Liste des types d'identifiant utilisés afin de renseigner l'idCofinanceursSollicites. Valeurs possibles : 'siret', 'siren', 'rid', 'ridet', 'thaiti', 'thaiti-t'. Séparer les valeurs par |.", 
       "type": "string",
-      "exemple": "siret|ridet",
+      "exemple": "siret/|ridet",
       "constraints": {
         "required": false,
         "pattern": "^(siret|siren|rid|ridet|thaiti|thaiti-t)(\\|(siret|siren|rid|ridet|thaiti|thaiti-t))*$"
