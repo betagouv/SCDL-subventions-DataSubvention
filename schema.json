@@ -78,7 +78,7 @@
       "description": "id interne d'identification d'une subvention permettant de faire le lien avec les actions et permettant de relier les informations sur les différents exercices budgétaires d'une subvention pluriannuelle. En cas de financement pluriannuel, cet identifiant est le même pour chaque exercice budgétaire.",
       "type": "string",
       "constraints": {
-        "required": false
+        "required": true
       }
     },
 
@@ -90,7 +90,6 @@
       "constraints": {
         "required": false
       }
-
     },
 
     {
@@ -98,7 +97,7 @@
       "title": "Nom de l'attribuant",
       "description": "Nom de l'autorité administrative qui pilote le dispositif ou programme de subvention ou en délègue la gestion. Par exemple le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
       "type": "string",
-      "example": "Région Bretagne",
+      "example": "Ministère du sport",
       "constraints": {
         "required": true
       }
@@ -107,17 +106,15 @@
     {
       "name": "typeIdAttribuant",
       "title": "Type d'identifiant de l'idAttribuant",
-      "description": "Type d'identifiant utilisé afin de renseigner l'idAttribuant. Valeurs possibles : 'siret', 'siren', 'rid', 'ridet', 'thaiti', 'thaiti-t'." ,
+      "description": "Si l'idAttribuant est différent de siret ou siren renseigner le type d'identifiant correspondant à l'idAttribuant. Valeurs possibles : 'rid', 'rid-et', 'tahiti', 'tahiti-et'." ,
       "type": "string",
       "constraints": {
         "required": false,
         "enum": [
-          "siret",
-          "siren",
+          "rid-et",
           "rid",
-          "ridet",
-          "thaiti",
-          "thaiti-t"
+          "tahiti",
+          "tahiti-et"
         ]
       }
     },
@@ -135,7 +132,7 @@
     {
       "name": "nomAutoriteGestion",
       "title": "Nom de l'autorité de gestion",
-      "description": "Si l'attribuant délègue la gestion de la subvention à une autre autorité, indiquer le nom de cette autorité de gestion. Par exemple, le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
+      "description": "Si le l'attribuant délègue la gestion de la subvention à une autre autorité, indiquer le nom de cette autorité de gestion. Par exemple, le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
       "type": "string",
       "example": "Agence Nationale du Sport",
       "constraints": {
@@ -146,17 +143,15 @@
     {
       "name": "typeIdAutoriteGestion",
       "title": "Type d'identifiant de l'idAutoriteGestion",
-      "description": "Type d'identifiant utilisé afin de renseigner l'idAutoriteGestion. Valeurs possibles : 'siret', 'siren', 'rid', 'ridet', 'thaiti', 'thaiti-t'." ,
+      "description": "Si l'idAutoriteGestion est différent de siret ou siren renseigner le type d'identifiant correspondant à idAutoriteGestion. Valeurs possibles : 'rid', 'rid-et', 'tahiti', 'tahiti-et'." ,
       "type": "string",
       "constraints": {
         "required": false,
         "enum": [
-          "siret",
-          "siren",
           "rid",
-          "ridet",
-          "thaiti",
-          "thaiti-t"
+          "rid-et",
+          "tahiti",
+          "tahiti-et"
         ]
       }
     },
@@ -186,17 +181,15 @@
     {
       "name": "typeIdServiceInstructeur",
       "title": "Type d'identifiant de l'idServiceInstructeur",
-      "description": "Type d'identifiant utilisé afin de renseigner l'idServiceInstructeur. Valeurs possibles : 'siret', 'siren', 'rid', 'ridet', 'thaiti', 'thaiti-t'." ,
+      "description": "Si l'idServiceInstructeur est différent de siret ou siren renseigner le type d'identifiant correspondant à idServiceInstructeur. Valeurs possibles : 'rid', 'rid-et', 'tahiti', 'tahiti-et'." ,
       "type": "string",
       "constraints": {
         "required": false,
         "enum": [
-          "siret",
-          "siren",
           "rid",
           "ridet",
-          "thaiti",
-          "thaiti-t"
+          "tahiti",
+          "tahiti-et"
         ]
       }
     },
@@ -208,7 +201,7 @@
       "type": "string",
       "example": "23350001600040",
       "constraints": {
-        "required": true
+        "required": false
       }
     },
     {
@@ -225,15 +218,14 @@
     {
       "name": "typeIdBeneficiaire",
       "title": "Type d'identifiant de l'idBeneficiaire",
-      "description": "Type d'identifiant utilisé afin de renseigner l'idBeneficiaire. Valeurs possibles : 'siret', 'ridet', 'thaiti-t'." ,
+      "description": "Si l'idBeneficiaire est différent de siret, renseigner le type d'identifiant correspondant à idBeneficiaire. Valeurs possibles : 'rid-et', 'tahiti-et'." ,
       "type": "string",
-      "example": "siret",
+      "example": "rid-et",
       "constraints": {
         "required": false,
         "enum": [
-          "siret",
-          "ridet",
-          "thaiti-t"
+          "rid-et",
+          "tahiti-et"
         ]
       }
     },
@@ -250,11 +242,12 @@
     {
       "name": "rnaBeneficiaire",
       "title": "Identification RNA du bénéficiaire",
-      "description": "Numéro d'identification RNA [Répertoire National des Associations](https://associations.gouv.fr/le-rna-repertoire-national-des-associations.html) de l'associaion ayant demandé la subvention, débutant par 'W' et composé de 9 chiffres",
+      "description": "Numéro d'identification RNA [Répertoire National des Associations](https://associations.gouv.fr/le-rna-repertoire-national-des-associations.html) de l'associaion bénéficiaire, débutant par 'W' et composé de 9 chiffres. Renseigner l'identifiant Amalia si Alsace-Moselle, débutant par 'A' suivi de treize caractères alphanumériques.",
       "type": "string",
       "example": "W380475558",
       "constraints": {
-        "pattern": "^W\\d{9}$"
+        "required": false,
+        "pattern": "^(W\\d{9}|A[A-Za-z0-9]{13})$"
       }
     },
     {
@@ -264,7 +257,7 @@
       "type": "year",
       "example": "2017",
       "constraints": {
-        "required": false
+        "required": true
       }
     },
 
@@ -289,10 +282,10 @@
       "title": "Années de la pluriannualité",
       "description": "si pluriannualité, indiquer les années de versement prévues.",
       "type": "string",
-      "example" : "2020|2021|2022",
+      "example" : "2020/2021/2022",
       "constraints": {
         "required": false,
-         "pattern": "^\\d{4}(\\|\\d{4})*$"
+         "pattern": "^\\d{4}(\\/\\d{4})*$"
       }
     },
 
@@ -406,8 +399,7 @@
         "enum": [
           "aide en numéraire",
           "aide en nature",
-          "aide en numéraire;aide en nature",
-          "aide en nature;aide en numéraire"
+          "aide en numéraire;aide en nature"
         ]
       }
     },
@@ -415,13 +407,14 @@
     {
       "name": "montantDemande",
       "title": "Montant de la demande de subvention",
-      "montantDemande" : "Montant demandé par le demandeur pour un exercice budgétaire donnée, calculé après répartition entre les bénéficiaires dans le cas de bénéficiaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
+      "description" : "Montant demandé par le demandeur pour un exercice budgétaire donnée, calculé après répartition entre les bénéficiaires dans le cas de bénéficiaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
       "type": "number",
       "example": "47800.20",
       "constraints": {
         "required": false
       }
     },
+
     {
       "name": "montant",
       "title": "Montant total de la subvention",
@@ -495,7 +488,7 @@
       "description": "Si conditionsVersements est égale à 'autre', description libre des modalités de versement de la subvention dans la limite de 256 caractères maximum.",
       "type": "string",
       "constraints": {
-        "required": true,
+        "required": false,
         "maxLength": 256
       }
     },
@@ -531,12 +524,12 @@
     {
       "name": "nomsAttribuantsCofinanceursSollicites",
       "title": "Attribuants cofinanceurs du projet",
-      "description": "Liste des noms des attribuants cofinanceurs qui ont été sollicités pour le projet. Si plusieurs attribuants, les séparer par |.",
+      "description": "Liste des noms des attribuants cofinanceurs qui ont été sollicités pour le projet. Si plusieurs attribuants, les séparer par /.",
       "type": "string",
       "constraints": {
         "required": false
       },
-      "example": "Région Bretagne|FDVA"
+      "example": "Région Bretagne/Union Européenne"
     },
 
     {
@@ -544,10 +537,10 @@
       "title": "Liste des types d'identifiant de l'idCofinanceursSollicites",
       "description": "Liste des types d'identifiant utilisés afin de renseigner l'idCofinanceursSollicites. Valeurs possibles : 'siret', 'siren', 'rid', 'ridet', 'thaiti', 'thaiti-t'. Séparer les valeurs par |.", 
       "type": "string",
-      "example": "siret|ridet",
+      "example": "siret/ridet",
       "constraints": {
         "required": false,
-        "pattern": "^(siret|siren|rid|ridet|thaiti|thaiti-t)(\\|(siret|siren|rid|ridet|thaiti|thaiti-t))*$"
+        "pattern": "^(siret/siren/rid/rid-et/tahiti/tahiti-et)(\\|(siret/siren/rid/rid-et/tahiti/tahiti-et))*$"
       }
     },
 
@@ -578,6 +571,7 @@
       "type": "string",
       "example": "12345",
       "constraints": {
+        "required": false,
         "maxLength": 5
       }
     },
