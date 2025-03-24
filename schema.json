@@ -247,7 +247,7 @@
       "example": "W380475558",
       "constraints": {
         "required": false,
-        "pattern": "^(W\\d{9}|A[A-Za-z0-9]{13})$"
+        "pattern": "^(W\\d{9}\\|A[A-Za-z0-9]{13})$"
       }
     },
     {
@@ -535,19 +535,18 @@
     {
       "name": "typeIdCofinanceursSollicites",
       "title": "Liste des types d'identifiant de l'idCofinanceursSollicites",
-      "description": "Liste des types d'identifiant utilisés afin de renseigner l'idCofinanceursSollicites. Valeurs possibles : 'siret', 'siren', 'rid', 'ridet', 'thaiti', 'thaiti-t'. Séparer les valeurs par |.", 
+      "description": "Liste des types d'identifiant utilisés afin de renseigner l'idCofinanceursSollicites. Valeurs possibles : 'siret', 'siren', 'rid', 'rid-et', 'tahiti', 'tahiti-et'. Séparer les valeurs par /.", 
       "type": "string",
       "example": "siret/ridet",
       "constraints": {
-        "required": false,
-        "pattern": "^(siret/siren/rid/rid-et/tahiti/tahiti-et)(\\|(siret/siren/rid/rid-et/tahiti/tahiti-et))*$"
+        "required": false
       }
     },
 
     {
       "name": "idCofinanceursSollicites",
       "title": "Liste des identifiants des cofinanceurs sollicités pour le projet",
-      "description": "Liste des identifiants des cofinanceurs qui ont été sollicités pour le projet. Si plusieurs cofinanceurs, les séparer par |.",
+      "description": "Liste des identifiants des cofinanceurs qui ont été sollicités pour le projet. Si plusieurs cofinanceurs, les séparer par /.",
       "type": "string",
       "constraints": {
         "required": false
