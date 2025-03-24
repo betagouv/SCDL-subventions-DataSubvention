@@ -387,7 +387,7 @@
     {
       "name": "objet",
       "title": "Objet de la subvention",
-      "description": "Renseigner 'fonctionnement global' si la subvention est déstinée au fonctionnement globale ou la liste des projet(s)/action(s) si la subvention est déstinée à un ou plusieurs projets/actions",
+      "description": "Renseigner 'fonctionnement global' si la subvention est destinée au fonctionnement globale ou la liste des projet(s)/action(s) si la subvention est destinée à un ou plusieurs projets/actions",
       "type": "string",
       "example": "Animations climat-énergie dans les lycées de la région",
       "constraints": {
