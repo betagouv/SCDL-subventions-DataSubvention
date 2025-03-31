@@ -93,6 +93,16 @@
     },
 
     {
+      "name": "descriptionIdJointure",
+      "title": "Identifiant jointure",
+      "description": "description de l'idJointure et de la jointure que l'idJointure permets d'effectuer",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+
+    {
       "name": "nomAttribuant",
       "title": "Nom de l'attribuant",
       "description": "Nom de l'autorité administrative qui pilote le dispositif ou programme de subvention ou en délègue la gestion. Par exemple le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
