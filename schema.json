@@ -106,12 +106,12 @@
     {
       "name": "typeIdAttribuant",
       "title": "Type d'identifiant de l'idAttribuant",
-      "description": "Si l'idAttribuant est différent de siret ou siren renseigner le type d'identifiant correspondant à l'idAttribuant. Valeurs possibles : 'rid', 'rid-et', 'tahiti', 'tahiti-et'." ,
+      "description": "Si l'idAttribuant est différent de siret ou siren renseigner le type d'identifiant correspondant à l'idAttribuant. Valeurs possibles : 'rid', 'ridet', 'tahiti', 'tahiti-et'." ,
       "type": "string",
       "constraints": {
         "required": false,
         "enum": [
-          "rid-et",
+          "ridet",
           "rid",
           "tahiti",
           "tahiti-et"
@@ -132,7 +132,7 @@
     {
       "name": "nomAutoriteGestion",
       "title": "Nom de l'autorité de gestion",
-      "description": "Si le l'attribuant délègue la gestion de la subvention à une autre autorité, indiquer le nom de cette autorité de gestion. Par exemple, le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
+      "description": "Si l'attribuant délègue la gestion de la subvention à une autre autorité, indiquer le nom de cette autorité de gestion. Par exemple, le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
       "type": "string",
       "example": "Agence Nationale du Sport",
       "constraints": {
@@ -143,13 +143,13 @@
     {
       "name": "typeIdAutoriteGestion",
       "title": "Type d'identifiant de l'idAutoriteGestion",
-      "description": "Si l'idAutoriteGestion est différent de siret ou siren renseigner le type d'identifiant correspondant à idAutoriteGestion. Valeurs possibles : 'rid', 'rid-et', 'tahiti', 'tahiti-et'." ,
+      "description": "Si l'idAutoriteGestion est différent de siret ou siren renseigner le type d'identifiant correspondant à idAutoriteGestion. Valeurs possibles : 'rid', 'ridet', 'tahiti', 'tahiti-et'." ,
       "type": "string",
       "constraints": {
         "required": false,
         "enum": [
           "rid",
-          "rid-et",
+          "ridet",
           "tahiti",
           "tahiti-et"
         ]
@@ -181,7 +181,7 @@
     {
       "name": "typeIdServiceInstructeur",
       "title": "Type d'identifiant de l'idServiceInstructeur",
-      "description": "Si l'idServiceInstructeur est différent de siret ou siren renseigner le type d'identifiant correspondant à idServiceInstructeur. Valeurs possibles : 'rid', 'rid-et', 'tahiti', 'tahiti-et'." ,
+      "description": "Si l'idServiceInstructeur est différent de siret ou siren renseigner le type d'identifiant correspondant à idServiceInstructeur. Valeurs possibles : 'rid', 'ridet', 'tahiti', 'tahiti-et'." ,
       "type": "string",
       "constraints": {
         "required": false,
@@ -218,13 +218,13 @@
     {
       "name": "typeIdBeneficiaire",
       "title": "Type d'identifiant de l'idBeneficiaire",
-      "description": "Si l'idBeneficiaire est différent de siret, renseigner le type d'identifiant correspondant à idBeneficiaire. Valeurs possibles : 'rid-et', 'tahiti-et'." ,
+      "description": "Si l'idBeneficiaire est différent de siret, renseigner le type d'identifiant correspondant à idBeneficiaire. Valeurs possibles : 'ridet', 'tahiti-et'." ,
       "type": "string",
-      "example": "rid-et",
+      "example": "ridet",
       "constraints": {
         "required": false,
         "enum": [
-          "rid-et",
+          "ridet",
           "tahiti-et"
         ]
       }
@@ -530,27 +530,6 @@
         "required": false
       },
       "example": "Région Bretagne/Union Européenne"
-    },
-
-    {
-      "name": "typeIdCofinanceursSollicites",
-      "title": "Liste des types d'identifiant de l'idCofinanceursSollicites",
-      "description": "Liste des types d'identifiant utilisés afin de renseigner l'idCofinanceursSollicites. Valeurs possibles : 'siret', 'siren', 'rid', 'rid-et', 'tahiti', 'tahiti-et'. Séparer les valeurs par /.", 
-      "type": "string",
-      "example": "siret/ridet",
-      "constraints": {
-        "required": false
-      }
-    },
-
-    {
-      "name": "idCofinanceursSollicites",
-      "title": "Liste des identifiants des cofinanceurs sollicités pour le projet",
-      "description": "Liste des identifiants des cofinanceurs qui ont été sollicités pour le projet. Si plusieurs cofinanceurs, les séparer par /.",
-      "type": "string",
-      "constraints": {
-        "required": false
-      }
     },
 
     {
