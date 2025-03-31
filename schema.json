@@ -46,13 +46,46 @@
       "title": "Pierlou RAMADE",
       "organisation": "data.gouv",
       "role": "contributor"
+    },
+    {
+      "title": "Pierre Dittgen",
+      "organisation": "Jailbreak",
+      "email": "pierre.dittgen@jailbreak.paris",
+      "role": "author"
     }
+    ,
+    {
+      "title": "Quentin Loridant",
+      "organisation": "multi",
+      "email": "quentin.loridant@multi.coop",
+      "role": "contributor"
+    },
+    {
+      "title": "Johan Richer",
+      "organisation": "multi",
+      "email": "johan.richer@multi.coop",
+      "role": "contributor"
+    },
+    {
+      "title": "Amélie Rondot",
+      "organisation": "multi",
+      "email": "amelie.rondot@multi.coop"}
   ],
   "fields": [
     {
       "name": "idSubvention",
       "title": "Identifiant de la subvention",
-      "description": "id interne d'identification d'une subvention permettant de faire le lien avec les actions et permettant de relier les informations sur les différents exercices budgetaire d'une subvention pluriannuel. En cas de financement pluriannuel, cet idéntifiant est le même pour chaque exercice budgetaire.",
+      "description": "id interne d'identification d'une subvention permettant de faire le lien avec les actions et permettant de relier les informations sur les différents exercices budgétaires d'une subvention pluriannuelle. En cas de financement pluriannuel, cet identifiant est le même pour chaque exercice budgétaire.",
+      "type": "string",
+      "constraints": {
+        "required": true
+      }
+    },
+
+    {
+      "name": "idJointure",
+      "title": "Identifiant jointure",
+      "description": "le cas échéant, identifiant permettant de faire la jointure avec une autre source de données",
       "type": "string",
       "constraints": {
         "required": false
@@ -62,79 +95,169 @@
     {
       "name": "nomAttribuant",
       "title": "Nom de l'attribuant",
-      "description": "Nom de l'administration qui 'pilote' le dispositif ou programme de subvention : l'administration délègue à l'opératuer la gestion de l'aide. Dans certains cas l'administration est égale à l'opérateur.",
+      "description": "Nom de l'autorité administrative qui pilote le dispositif ou programme de subvention ou en délègue la gestion. Par exemple le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
       "type": "string",
-      "example": "Région Bretagne",
+      "example": "Ministère du sport",
       "constraints": {
         "required": true
       }
     },
+
     {
-      "name": "idAttribuant",
-      "title": "Identification de l'attribuant",
-      "description": "SIRET de l'administration qui 'pilote' le dispositif ou programme de subvention : l'administration qui délègue à l'opératuer la gestion de l'aide. Dans certains cas l'administration est égale à l'opérateur.",
+      "name": "typeIdAttribuant",
+      "title": "Type d'identifiant de l'idAttribuant",
+      "description": "Si l'idAttribuant est différent de siret ou siren renseigner le type d'identifiant correspondant à l'idAttribuant. Valeurs possibles : 'rid', 'ridet', 'tahiti', 'tahiti-et'." ,
       "type": "string",
-      "example": "23350001600040",
       "constraints": {
-        "required": true,
-        "pattern": "^\\d{14}$"
+        "required": false,
+        "enum": [
+          "ridet",
+          "rid",
+          "tahiti",
+          "tahiti-et"
+        ]
       }
     },
+
+    {
+      "name": "idAttribuant",
+      "title": "Identifiant de l'attribuant",
+      "description": "Identifiant de l'autorité administrative qui pilote le dispositif ou programme de subvention ou en délègue la gestion. Par exemple le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
+      "type": "string",
+      "constraints": {
+        "required": true
+      }
+    },
+
+    {
+      "name": "nomAutoriteGestion",
+      "title": "Nom de l'autorité de gestion",
+      "description": "Si l'attribuant délègue la gestion de la subvention à une autre autorité, indiquer le nom de cette autorité de gestion. Par exemple, le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
+      "type": "string",
+      "example": "Agence Nationale du Sport",
+      "constraints": {
+        "required": false
+      }
+    },
+
+    {
+      "name": "typeIdAutoriteGestion",
+      "title": "Type d'identifiant de l'idAutoriteGestion",
+      "description": "Si l'idAutoriteGestion est différent de siret ou siren renseigner le type d'identifiant correspondant à idAutoriteGestion. Valeurs possibles : 'rid', 'ridet', 'tahiti', 'tahiti-et'." ,
+      "type": "string",
+      "constraints": {
+        "required": false,
+        "enum": [
+          "rid",
+          "ridet",
+          "tahiti",
+          "tahiti-et"
+        ]
+      }
+    },
+
+    {
+      "name": "idAutoriteGestion",
+      "title": "Identifiant de l'autorité de gestion",
+      "description": "Si l'attribuant délègue la gestion de la subvention à une autre autorité, indiquer l'idéntifiant de cette autorité de gestion.",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
+    },
+
+
     {
       "name": "nomServiceInstructeur",
       "title": "Nom du service instructeur",
-      "description": "Nom du service qui instruit la demande. Si possible, reprendre le titre du service tel qu'affiché sur l'annuaire des services publics. https://lannuaire.service-public.fr/gouvernement/c6ef7a55-69ea-4c15-b6c8-addcde7bdb63",
+      "description": "Nom du service qui instruit la demande. Si possible, reprendre le titre du service tel qu'affiché sur l'annuaire des services publics.",
       "type": "string",
       "example": "Région Bretagne",
       "constraints": {
         "required": false
       }
     },
+
+    {
+      "name": "typeIdServiceInstructeur",
+      "title": "Type d'identifiant de l'idServiceInstructeur",
+      "description": "Si l'idServiceInstructeur est différent de siret ou siren renseigner le type d'identifiant correspondant à idServiceInstructeur. Valeurs possibles : 'rid', 'ridet', 'tahiti', 'tahiti-et'." ,
+      "type": "string",
+      "constraints": {
+        "required": false,
+        "enum": [
+          "rid",
+          "ridet",
+          "tahiti",
+          "tahiti-et"
+        ]
+      }
+    },
+
     {
       "name": "idServiceInstructeur",
-      "title": "Identification de l'attribuant",
-      "description": "SIRET du service qui instruit la demande",
+      "title": "Identifiant service instructeur",
+      "description": "Identifiant du service qui instruit la demande",
       "type": "string",
       "example": "23350001600040",
       "constraints": {
-        "required": true
+        "required": false
       }
     },
     {
       "name": "nomBeneficiaire",
       "title": "Nom du bénéficiaire",
-      "description": "Nom officiel ou raison sociale du bénéficiaire de la subvention.",
+      "description": "Nom officiel ou raison sociale de l'établissement bénéficiaire de la subvention.",
       "type": "string",
       "example": "Association Les Petits Débrouillards Bretagne",
       "constraints": {
         "required": true
       }
     },
+
+    {
+      "name": "typeIdBeneficiaire",
+      "title": "Type d'identifiant de l'idBeneficiaire",
+      "description": "Si l'idBeneficiaire est différent de siret, renseigner le type d'identifiant correspondant à idBeneficiaire. Valeurs possibles : 'ridet', 'tahiti-et'." ,
+      "type": "string",
+      "example": "ridet",
+      "constraints": {
+        "required": false,
+        "enum": [
+          "ridet",
+          "tahiti-et"
+        ]
+      }
+    },
+
     {
       "name": "idBeneficiaire",
-      "title": "Identification SIRET du bénéficiaire",
-      "description": "Identifiant du [Système d'Identification du Répertoire des Etablissements](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) (SIRET) du l'établissement de l'association ayant demandé la subvention, composé de 9 chiffres SIREN + 5 chiffres NIC d’un seul tenant. Dans le cadre précis d'une subvention en nature pour une association, il est possible de ne pas renseigner de SIRET. Il faudra alors renseigner le champ rnaBeneficiaire.",
+      "title": "Identifiant du bénéficiaire",
+      "description": "Identifiant de l'établissement de l'association bénéficiaire de la subvention.",
       "type": "string",
-      "example": "38047555800058"
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "rnaBeneficiaire",
       "title": "Identification RNA du bénéficiaire",
-      "description": "Numéro d'identification RNA [Répertoire National des Associations](https://associations.gouv.fr/le-rna-repertoire-national-des-associations.html) de l'associaion ayant demandé la subvention, débutant par 'W' et composé de 9 chiffres",
+      "description": "Numéro d'identification RNA [Répertoire National des Associations](https://associations.gouv.fr/le-rna-repertoire-national-des-associations.html) de l'associaion bénéficiaire, débutant par 'W' et composé de 9 chiffres. Renseigner l'identifiant Amalia si Alsace-Moselle, débutant par 'A' suivi de treize caractères alphanumériques.",
       "type": "string",
       "example": "W380475558",
       "constraints": {
-        "pattern": "^W\\d{9}$"
+        "required": false,
+        "pattern": "^(W\\d{9}\\|A[A-Za-z0-9]{13})$"
       }
     },
     {
       "name": "exerciceBudgetaire",
       "title": "Exercice budgétaire",
-      "description": "Année de la réalisation des actions liées à la subvention. Si la subvention est pluriannuel, il faudra renseigner une ligne par exercice budgetaire concerné par la subvention.",
-      "type": "integer",
+      "description": "Année de la réalisation des actions liées à la subvention. Si la subvention est pluriannuelle, il faudra renseigner une ligne par exercice budgetaire concerné par la subvention.",
+      "type": "year",
       "example": "2017",
       "constraints": {
-        "required": false
+        "required": true
       }
     },
 
@@ -142,11 +265,13 @@
       "name": "pluriannualite",
       "title": "Pluriannualité de la subvention",
       "description" : "Indiquer si oui ou non la subvention est attribuée sur plusieurs années civiles consecutifs. Valeurs possibles : 'oui' ou 'non'.",
-      "type": "string",
+      "type": "boolean",
       "constraints": {
         "required": false,
-        "enum": [
-          "oui",
+        "trueValues": [
+          "oui"
+        ],
+        "falseValues": [
           "non"
         ]
       }
@@ -157,9 +282,10 @@
       "title": "Années de la pluriannualité",
       "description": "si pluriannualité, indiquer les années de versement prévues.",
       "type": "string",
-      "example" : "2020 - 2021 - 2022",
+      "example" : "2020/2021/2022",
       "constraints": {
-        "required": false
+        "required": false,
+         "pattern": "^\\d{4}(\\/\\d{4})*$"
       }
     },
 
@@ -193,38 +319,30 @@
       }
     },
     {
-      "name": "dateCreation",
-      "title": "Date création du dossier",
-      "description": "Date complète de dépôt de la demande. Format : AAAA-MM-JJsuivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "name": "dateDepotDemande",
+      "title": "Date dépôt dossier",
+      "description": "Date complète de dépôt de la demande. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
       "type": "date",
       "example": "2017-06-27",
       "constraints": {
         "required": false
       }
     },
+   
     {
-      "name": "dateDebut",
-      "title": "Date de début du projet",
-      "description": "Date de début du projet financé. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
-      "type": "date",
-      "example": "2017-06-27",
+      "name":"anneDepotDemande",
+      "title": "Année de dépôt dossier",
+      "description": "Année de dépôt de la demande de subvention.",
+      "type": "year",
+      "example": "2017",
       "constraints": {
         "required": false
       }
     },
+
     {
-      "name": "dateFin",
-      "title": "Date de fin du projet",
-      "description": "Date de fin du projet financé. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
-      "type": "date",
-      "example": "2017-06-27",
-      "constraints": {
-        "required": false
-      }
-    },
-    {
-      "name": "dispositif",
-      "title": "Dispositif de subvention",
+      "name": "dispositifAide",
+      "title": "Dispositif d'aide",
       "description": "Nom du dispositif de financement ou du programme de subvention.",
       "type": "string",
       "examples": "FIPDR, MILDECA, Fond sociale européen...",
@@ -246,14 +364,14 @@
     {
       "name": "statutLabel",
       "title": "Statut de la demande de subvention",
-      "description": "Statut du traitement de la demande. Valeurs possibles : en cours d'intruction, attribué, ineligible (la subvention ne respecte pas les critères d'eligibilité. Exemple : dossier incomplet), refusée (la demande a été instruite mais la subvention n'a pas été accordée).",
+      "description": "Statut du traitement de la demande. Valeurs possibles : en cours d'instruction, attribuée, inéligible (la subvention ne respecte pas les critères d'éligibilité. Exemple : dossier incomplet), refusée (la demande a été instruite mais la subvention n'a pas été accordée).",
       "type": "string",
       "constraints": {
         "required": false,
         "enum": [
-          "en cours d'intruction",
+          "en cours d'instruction",
           "attribuée",
-          "ineligible",
+          "inéligible",
           "refusée"
         ]
       }
@@ -262,7 +380,7 @@
     {
       "name": "objet",
       "title": "Objet de la subvention",
-      "description": "Description de l'objet de la subvention attribuée limitée à 256 caractères maximum.",
+      "description": "Renseigner 'fonctionnement global' si la subvention est destinée au fonctionnement globale ou la liste des projet(s)/action(s) si la subvention est destinée à un ou plusieurs projets/actions",
       "type": "string",
       "example": "Animations climat-énergie dans les lycées de la région",
       "constraints": {
@@ -281,8 +399,7 @@
         "enum": [
           "aide en numéraire",
           "aide en nature",
-          "aide en numéraire;aide en nature",
-          "aide en nature;aide en numéraire"
+          "aide en numéraire;aide en nature"
         ]
       }
     },
@@ -290,13 +407,14 @@
     {
       "name": "montantDemande",
       "title": "Montant de la demande de subvention",
-      "montantDemande" : "Montant demandé par le demandeur pour un exercise budgetaire donnée, calculé après répartition entre les bénéficaires dans le cas de bénéficiaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
+      "description" : "Montant demandé par le demandeur pour un exercice budgétaire donnée, calculé après répartition entre les bénéficiaires dans le cas de bénéficiaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
       "type": "number",
       "example": "47800.20",
       "constraints": {
         "required": false
       }
     },
+
     {
       "name": "montant",
       "title": "Montant total de la subvention",
@@ -304,7 +422,7 @@
       "type": "number",
       "example": "47800.20",
       "constraints": {
-        "required": false
+        "required": true
       }
     },
     {
@@ -338,8 +456,8 @@
       }
     },
     {
-      "name": "cléVersement",
-      "title": "Clé de versement",
+      "name": "idVersement",
+      "title": "Identifiant versement",
       "description": "Si un numéro d'Engagement Juridique n'existe pas renseigner l'identifiant permettant de relier la demande de subvention aux versements.",
       "type": "string",
       "constraints": {
@@ -370,7 +488,7 @@
       "description": "Si conditionsVersements est égale à 'autre', description libre des modalités de versement de la subvention dans la limite de 256 caractères maximum.",
       "type": "string",
       "constraints": {
-        "required": true,
+        "required": false,
         "maxLength": 256
       }
     },
@@ -388,32 +506,36 @@
       }
     },
     {
-      "name": "cofinancement",
-      "title": "Cofinancement",
-      "description": "Indiquer si le projet est cofinancé. Valeurs possibles : 'oui' ou 'non'.",
-      "type": "string",
+      "name": "cofinancementsSollicites",
+      "title": "Cofinancements sollicités",
+      "description": "Indiquer si d'autres subventions publiques ont été sollicitées pour le projet. Valeurs possibles : 'oui' ou 'non'.",
+      "type": "boolean",
       "constraints": {
         "required": false,
-        "enum": [
-          "oui",
+        "trueValues": [
+          "oui"
+        ],
+        "falseValues": [
           "non"
         ]
       }
     },
+
     {
-      "name": "attribuantsCofinanceurs",
+      "name": "nomsAttribuantsCofinanceursSollicites",
       "title": "Attribuants cofinanceurs du projet",
-      "description": "Liste des noms des attribuants cofinanceurs du projet. Si plusieurs attribuants, les séparer par des virgules.",
+      "description": "Liste des noms des attribuants cofinanceurs qui ont été sollicités pour le projet. Si plusieurs attribuants, les séparer par /.",
       "type": "string",
       "constraints": {
         "required": false
-      }
+      },
+      "example": "Région Bretagne/Union Européenne"
     },
 
     {
       "name": "idCofinancement",
       "title": "Identification du pojet cofinancé",
-      "description": "Identification unique pour un projet donné, commun à tous les cofinanceurs du projet",
+      "description": "Identification unique pour un projet donné, commun à tous les cofinanceurs sollicités pour le projet",
       "type": "string",
       "constraints": {
         "required": false
@@ -427,6 +549,7 @@
       "type": "string",
       "example": "12345",
       "constraints": {
+        "required": false,
         "maxLength": 5
       }
     },
@@ -434,14 +557,17 @@
       "name": "notificationUE",
       "title": "Aide d'Etat notifiée à la Commission Européenne",
       "description": "Subvention attribuée au titre d’une aide de minimis notifiée à la Commission Européenne en vertu des dispositions du règlement n° 1407/2013 du 18 décembre 2013. Seules les valeurs 'oui' ou 'non' sont autorisées.",
-      "type": "string",
+      "type": "boolean",
       "example": "non",
       "constraints": {
         "required": true,
-        "enum": [
-          "oui",
+        "trueValues": [
+          "oui"
+        ],
+        "falseValues": [
           "non"
         ]
+        
       }
     },
 
@@ -488,18 +614,7 @@
     }
   ],
   "custom_checks": [
-    {
-      "name": "french-siret-value",
-      "params": {
-        "column": "idAttribuant"
-      }
-    },
-    {
-      "name": "french-siret-value",
-      "params": {
-        "column": "idBeneficiaire"
-      }
-    },
+
     {
       "name": "one-of-required",
       "params": {
