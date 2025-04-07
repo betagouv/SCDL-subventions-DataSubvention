@@ -35,12 +35,16 @@
     }
   ],
   "created": "2018-04-27",
-  "lastModified": "2024-09-16",
+  "lastModified": "2025-07-04",
   "version": "2.1.1",
   "contributors": [
     {
       "title": "Data.Subvention",
       "role": "author"
+    },
+    {
+      "title": "OpenDataFrance",
+      "role": "contributor"
     },
     {
       "title": "Pierlou RAMADE",
@@ -69,7 +73,9 @@
     {
       "title": "Amélie Rondot",
       "organisation": "multi",
-      "email": "amelie.rondot@multi.coop"}
+      "email": "amelie.rondot@multi.coop",
+      "role": "contributor"
+    }
   ],
   "fields": [
     {
@@ -266,14 +272,10 @@
       "title": "Pluriannualité de la subvention",
       "description" : "Indiquer si oui ou non la subvention est attribuée sur plusieurs années civiles consecutifs. Valeurs possibles : 'oui' ou 'non'.",
       "type": "boolean",
+      "trueValues": ["oui"],
+      "falseValues": ["non"],
       "constraints": {
-        "required": false,
-        "trueValues": [
-          "oui"
-        ],
-        "falseValues": [
-          "non"
-        ]
+        "required": false
       }
     },
 
@@ -505,20 +507,15 @@
         "pattern": "^[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}(\\/[0-9]{4}\\-[0-9]{2}\\-[0-9]{2})?$"
       }
     },
+
     {
       "name": "cofinancementsSollicites",
       "title": "Cofinancements sollicités",
       "description": "Indiquer si d'autres subventions publiques ont été sollicitées pour le projet. Valeurs possibles : 'oui' ou 'non'.",
       "type": "boolean",
-      "constraints": {
-        "required": false,
-        "trueValues": [
-          "oui"
-        ],
-        "falseValues": [
-          "non"
-        ]
-      }
+      "trueValues": ["oui"],
+      "falseValues": ["non"],
+      "constraints": {"required": false}
     },
 
     {
@@ -553,24 +550,17 @@
         "maxLength": 5
       }
     },
+
     {
       "name": "notificationUE",
       "title": "Aide d'Etat notifiée à la Commission Européenne",
       "description": "Subvention attribuée au titre d’une aide de minimis notifiée à la Commission Européenne en vertu des dispositions du règlement n° 1407/2013 du 18 décembre 2013. Seules les valeurs 'oui' ou 'non' sont autorisées.",
       "type": "boolean",
       "example": "non",
-      "constraints": {
-        "required": true,
-        "trueValues": [
-          "oui"
-        ],
-        "falseValues": [
-          "non"
-        ]
-        
-      }
+      "required": true,
+      "trueValues": ["oui"],
+      "falseValues": ["non"]
     },
-
 
     {
       "name": "pourcentageSubvention",
@@ -595,7 +585,7 @@
       }
     },
     {
-      "name": "evaluation",
+      "name": "evaluationFinProjet",
       "title": "Evaluation du projet",
       "description": "si il y a eu une évaluation de fin de projet, renseigner le résultat écrit de l'évaluation.",
       "type": "string",
