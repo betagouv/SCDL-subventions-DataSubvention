@@ -595,15 +595,5 @@
         "required": false
       }
     }
-  ],
-  "custom_checks": [
-
-    {
-      "name": "one-of-required",
-      "params": {
-        "column1": "idBeneficiaire",
-        "column2": "rnaBeneficiaire"
-      }
-    }
   ]
 }
