@@ -35,7 +35,7 @@
     }
   ],
   "created": "2018-04-27",
-  "lastModified": "2025-07-04",
+  "lastModified": "2025-04-07",
   "version": "2.1.1",
   "contributors": [
     {
@@ -89,26 +89,6 @@
     },
 
     {
-      "name": "idJointure",
-      "title": "Identifiant jointure",
-      "description": "le cas échéant, identifiant permettant de faire la jointure avec une autre source de données",
-      "type": "string",
-      "constraints": {
-        "required": false
-      }
-    },
-
-    {
-      "name": "descriptionIdJointure",
-      "title": "Identifiant jointure",
-      "description": "description de l'idJointure et de la jointure que l'idJointure permets d'effectuer",
-      "type": "string",
-      "constraints": {
-        "required": false
-      }
-    },
-
-    {
       "name": "nomAttribuant",
       "title": "Nom de l'attribuant",
       "description": "Nom de l'autorité administrative qui pilote le dispositif ou programme de subvention ou en délègue la gestion. Par exemple le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
@@ -141,7 +121,8 @@
       "description": "Identifiant de l'autorité administrative qui pilote le dispositif ou programme de subvention ou en délègue la gestion. Par exemple le ministère du sport en charge du programme 219 délègue à l'ANS la gestion de certains dispositifs et objectifs. L'attribuant dans ce cas est le ministère du sport, et l'autorité de gestion est l'ANS.",
       "type": "string",
       "constraints": {
-        "required": true
+        "required": true,
+        "pattern": "^(\\d{9}|\\d{14}|\\d{6}|\\d{7}|\\d{10}|[A-Za-z]{1}\\d{5}|[A-Za-z]{1}\\d{8})$"
       }
     },
 
@@ -178,7 +159,8 @@
       "description": "Si l'attribuant délègue la gestion de la subvention à une autre autorité, indiquer l'idéntifiant de cette autorité de gestion.",
       "type": "string",
       "constraints": {
-        "required": false
+        "required": false,
+        "pattern": "^(\\d{9}|\\d{14}|\\d{6}|\\d{7}|\\d{10}|[A-Za-z]{1}\\d{5}|[A-Za-z]{1}\\d{8})$"
       }
     },
 
@@ -217,7 +199,8 @@
       "type": "string",
       "example": "23350001600040",
       "constraints": {
-        "required": false
+        "required": false,
+        "pattern": "^(\\d{9}|\\d{14}|\\d{6}|\\d{7}|\\d{10}|[A-Za-z]{1}\\d{5}|[A-Za-z]{1}\\d{8})$"
       }
     },
     {
@@ -252,7 +235,8 @@
       "description": "Identifiant de l'établissement de l'association bénéficiaire de la subvention.",
       "type": "string",
       "constraints": {
-        "required": true
+        "required": true,
+        "pattern": "^(\\d{14}|\\d{9}|\\d{10}|[A-Za-z]{1}\\d{8})$"
       }
     },
     {
@@ -280,7 +264,7 @@
     {
       "name": "pluriannualite",
       "title": "Pluriannualité de la subvention",
-      "description" : "Indiquer si oui ou non la subvention est attribuée sur plusieurs années civiles consecutifs. Valeurs possibles : 'oui' ou 'non'.",
+      "description" : "Indiquer si oui ou non la subvention est attribuée sur plusieurs années civiles consécutives. Valeurs possibles : 'oui' ou 'non'.",
       "type": "boolean",
       "trueValues": ["oui"],
       "falseValues": ["non"],
@@ -304,7 +288,7 @@
     {
       "name": "dateDecision",
       "title": "Date de décision",
-      "description": "Date de la commission statuant sur l'attribution ou le refus de la subvention. Format : AAAA-MM-JJ",
+      "description": "Date de la commission statuant sur l'attribution ou le refus de la subvention. Format : AAAA-MM-JJ.",
       "type": "date",
       "example": "2017-06-27",
       "constraints": {
@@ -314,7 +298,7 @@
     {
       "name": "dateConvention",
       "title": "Date de la convention de subvention",
-      "description": "Date de signature de la convention au format AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "description": "Date de signature de la convention. Format : AAAA-MM-JJ.",
       "type": "date",
       "example": "2017-06-27",
       "constraints": {
@@ -332,8 +316,8 @@
     },
     {
       "name": "dateDepotDemande",
-      "title": "Date dépôt dossier",
-      "description": "Date complète de dépôt de la demande. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "title": "Date dépôt du dossier de demande de subvention",
+      "description": "Date complète de dépôt du dossier de demande de subvention. Format : AAAA-MM-JJ.",
       "type": "date",
       "example": "2017-06-27",
       "constraints": {
@@ -357,7 +341,7 @@
       "title": "Dispositif d'aide",
       "description": "Nom du dispositif de financement ou du programme de subvention.",
       "type": "string",
-      "examples": "FIPDR, MILDECA, Fond sociale européen...",
+      "examples": "FIPDR, MILDECA, Fond social européen...",
       "constraints": {
         "required": false
       }
@@ -392,12 +376,11 @@
     {
       "name": "objet",
       "title": "Objet de la subvention",
-      "description": "Renseigner 'fonctionnement global' si la subvention est destinée au fonctionnement globale ou la liste des projet(s)/action(s) si la subvention est destinée à un ou plusieurs projets/actions",
+      "description": "Renseigner 'fonctionnement global' si la subvention est destinée au fonctionnement global ou la liste des projet(s)/action(s) si la subvention est destinée à un ou plusieurs projet(s)/action(s)",
       "type": "string",
       "example": "Animations climat-énergie dans les lycées de la région",
       "constraints": {
-        "required": true,
-        "maxLength": 256
+        "required": true
       }
     },
     {
@@ -411,7 +394,7 @@
         "enum": [
           "aide en numéraire",
           "aide en nature",
-          "aide en numéraire;aide en nature"
+          "aide en numéraire et aide en nature"
         ]
       }
     },
@@ -419,7 +402,7 @@
     {
       "name": "montantDemande",
       "title": "Montant de la demande de subvention",
-      "description" : "Montant demandé par le demandeur pour un exercice budgétaire donnée, calculé après répartition entre les bénéficiaires dans le cas de bénéficiaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
+      "description" : "Montant en euros deemandé par le demandeur pour un exercice budgétaire donnée, calculé après répartition entre les bénéficiaires dans le cas de bénéficiaires multiples. Le signe de séparation entre les parties entière et décimale du nombre est le point.",
       "type": "number",
       "example": "47800.20",
       "constraints": {
@@ -458,7 +441,7 @@
       }
     },
     {
-      "name": "ej",
+      "name": "engagementJuridique",
       "title": "engagement juridique de la demande de subvention",
       "description": "Numéro d'Engagement Juridique. Laisser vide si non-concerné",
       "type": "string",
@@ -481,7 +464,7 @@
     {
       "name": "conditionsVersement",
       "title": "Conditions de versement de la subvention",
-      "description": "Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné' ou 'autre'. ",
+      "description": "Choix unique parmi plusieurs valeurs possibles : 'unique', 'échelonné' ou 'autre'. Si condtionsVersements est égale à 'autre', il faut renseigner le champ descriptionConditionsVersement.",
       "type": "string",
       "example": "échelonné",
       "constraints": {
@@ -606,7 +589,7 @@
     {
       "name": "dateMiseAJour",
       "title": "Date de mise à jour",
-      "description": "Date de fin de la periode couverte par l'extract. Format : AAAA-MM-JJ suivant la norme internationale [ISO 8601](https://fr.wikipedia.org/wiki/ISO_8601).",
+      "description": "Date de fin de la periode couverte par l'extract. Format : AAAA-MM-JJ.",
       "type": "date",
       "constraints": {
         "required": false
